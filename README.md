@@ -1,16 +1,40 @@
-# React + Vite
+# 🛒 React + Zustand E-Commerce Catalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modular, high-performance e-commerce storefront built with **React 18**, **Zustand**, and **Tailwind CSS**. This project demonstrates the transition from Vanilla JavaScript fundamentals to professional React state management patterns.
 
-Currently, two official plugins are available:
+## 🚀 The Evolution
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Phase 1 (Vanilla):** Mastered DOM manipulation, event delegation, and procedural logic.
+- **Phase 2 (React Migration):** Refactored the architecture into a component-based system using **React Router** for navigation and **Zustand** for global state.
 
-## React Compiler
+## 🛠️ Tech Stack & Architecture
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework:** React 18 (Vite)
+- **State Management:** Zustand (Slice Pattern)
+- **Routing:** React Router DOM (Nested Layouts)
+- **Styling:** Tailwind CSS (Mobile-First / 2K Optimized)
+- **API:** FakeStoreAPI
 
-## Expanding the ESLint configuration
+### Key Architectural Decisions:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Zustand Slice Pattern:** Separated `productSlice` and `cartSlice` to keep state management modular and scalable.
+- **Smart Fetching:** Implemented a `hasFetched` guard in the store to prevent redundant API calls during component re-mounts.
+- **MainLayout Wrapper:** Utilized a centralized `MainLayout` with `<Outlet />` to manage shared UI elements (Header, Sidebar, MobileNav) efficiently.
+- **Persistent Logic:** Built a robust cart system that handles quantities, dynamic totals (using `.reduce`), and item removal via immutable state updates.
+
+## ✨ Features
+
+- **Dynamic Search:** Real-time product filtering using a synchronized global search query.
+- **Category Generation:** Programmatic category extraction and formatting (Title Case) from raw API data.
+- **Responsive Navigation:** Sidebar and MobileNav toggling logic managed through local React state.
+- **Performance:** Optimized rendering using grid layouts that scale from 2 to 6 columns based on viewport width.
+
+## 🔧 Installation
+
+1. `git clone [your-link-here]`
+2. `npm install`
+3. `npm run dev`
+
+---
+
+_Focusing on clean logic and scalable React patterns._
