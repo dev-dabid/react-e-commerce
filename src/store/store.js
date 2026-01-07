@@ -1,0 +1,69 @@
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+
+const createProductSlice = (set, get) => ({
+  products: [],
+  currentCategory: "all",
+  searchQuery: "",
+  hasFetched: false,
+
+  productActions: {
+    fetchProducts: async () => {
+      if (get().hasFetched) return;
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+        set({ products: data, hasFetched: true });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    searchProducts: (keyword) => set(() => ({ searchQuery: keyword })),
+  },
+});
+
+const createCartSlice = (set, get) => ({
+  cart: [],
+
+  cartActions: {
+    addToCart: (productId, product, selectedQty) => {
+      const existingItem = get().cart.find((item) => item.id === productId);
+
+      if (existingItem) {
+        set((state) => ({
+          cart: state.cart.map((item) =>
+            item.id === productId
+              ? { ...item, quantity: item.quantity + selectedQty }
+              : item
+          ),
+        }));
+      } else {
+        set((state) => ({
+          cart: [...state.cart, { ...product, quantity: selectedQty }],
+        }));
+      }
+    },
+
+    removeCartItem: (id) =>
+      set((state) => ({
+        cart: state.cart.filter((item) => {
+          return item.id !== id;
+        }),
+      })),
+
+    updateQuantity: (id, newQty) =>
+      set((state) => ({
+        cart: state.cart.map((item) => {
+          return item.id === id ? { ...item, quantity: newQty } : item;
+        }),
+      })),
+
+    resetCart: () => set({ cart: [] }),
+  },
+});
+
+export const useStore = create((...a) => ({
+  ...createProductSlice(...a),
+  ...createCartSlice(...a),
+}));
