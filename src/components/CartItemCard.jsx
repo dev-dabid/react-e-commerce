@@ -34,11 +34,11 @@ const CartItemCard = ({ item }) => {
           <input
             onChange={(e) => {
               const newQty = Number(e.target.value);
-              if (newQty <= 0) return;
+              if (newQty < 1 || newQty > 100) return;
               setCount(newQty);
               updateQuantity(id, newQty);
             }}
-            className="text-center"
+            className="text-center disabled:opacity-50 disabled:cursor-not-allowed"
             type="number"
             id="quantity"
             name="quantity"

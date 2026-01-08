@@ -16,22 +16,15 @@ const Sidebar = ({ isOpen, toggleSideBar }) => {
     position: "fixed",
     top: "0",
     left: "0",
-    zIndex: "50",
+    zIndex: "500",
     display: "flex",
     borderRight: "1px solid #e5e5e5",
+    width: "256px",
   };
 
   return (
     <div>
       <div style={sidebarStyle} className="hidden lg:flex">
-        <div className="right-0 absolute py-3 pr-5">
-          <button
-            onClick={toggleSideBar}
-            className="hover:bg-gray-300 active:bg-gray-200 rounded-2xl p-1"
-          >
-            <GrClose size={25} />
-          </button>
-        </div>
         <ul className="flex  flex-col gap-5 text-sm pt-20 pr-10">
           <Link className="flex items-center gap-5" to={"/"}>
             <HiOutlineHome size={30} />

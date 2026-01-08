@@ -3,7 +3,7 @@ import CartBadge from "./CartBadge";
 
 const Header = ({ toggleSideBar }) => {
   return (
-    <div className="bg-white sticky top-0 pb-2 sm:pb-0 sm:px-5 px-2 py-2">
+    <div className="bg-white sticky top-0 pb-2 sm:pb-0 sm:px-5 px-2 py-2 border-b border-solid border-[#e5e5e5]">
       <div className="lg:flex justify-between items-center p-2 hidden">
         <div>
           <button

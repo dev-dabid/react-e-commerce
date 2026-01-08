@@ -20,10 +20,11 @@ const MainLayout = () => {
   };
 
   return (
-    <main className="relative">
+    <main className={`relative  ${isOpen ? "ml-64" : "ml-0"}`}>
       <Header toggleSideBar={toggleSideBar} />
       <Sidebar isOpen={isOpen} toggleSideBar={toggleSideBar} />
       <Outlet context={cart} />
+
       <MobileNav />
     </main>
   );
