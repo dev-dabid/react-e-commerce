@@ -23,27 +23,25 @@ const Sidebar = ({ isOpen, toggleSideBar }) => {
   };
 
   return (
-    <div>
-      <div style={sidebarStyle} className="hidden lg:flex">
-        <ul className="flex  flex-col gap-5 text-sm pt-20 pr-10">
-          <Link className="flex items-center gap-5" to={"/"}>
-            <HiOutlineHome size={30} />
-            <p>Home</p>
-          </Link>
-          <Link className="flex items-center gap-5" to={"categories"}>
-            <TbCategory size={30} />
-            <p>Categories</p>
-          </Link>
-          <Link className="flex items-center gap-5" to={"cart"}>
-            <PiShoppingCartThin size={30} />
-            <p>Cart</p>
-          </Link>
-          <Link className="flex items-center gap-5" to={"account"}>
-            <PiUserLight size={30} />
-            <p>Account</p>
-          </Link>
-        </ul>
-      </div>
+    <div style={sidebarStyle} className="flex">
+      <ul className="flex  flex-col gap-5 text-sm pt-20 pr-10">
+        <Link className="flex items-center gap-5" to={"/"}>
+          <HiOutlineHome size={30} />
+          <p>Home</p>
+        </Link>
+        <Link className="flex items-center gap-5" to={"categories"}>
+          <TbCategory size={30} />
+          <p>Categories</p>
+        </Link>
+        <Link className="flex items-center gap-5" to={"cart"}>
+          <PiShoppingCartThin size={30} />
+          <p>Cart</p>
+        </Link>
+        <Link className="flex items-center gap-5" to={"account"}>
+          <PiUserLight size={30} />
+          <p>Account</p>
+        </Link>
+      </ul>
     </div>
   );
 };
