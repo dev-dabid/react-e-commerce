@@ -24,7 +24,7 @@ const Sidebar = ({ isOpen }) => {
   return (
     <div style={sidebarStyle} className="flex flex-col">
       <p className="font-outfit text-3xl font-medium mt-5">MyStore</p>
-      <ul className="flex flex-col gap-5 text-sm pt-5 pr-10">
+      <ul className="flex flex-col gap-5 text-sm mt-10 mr-10">
         <Link className="flex items-center gap-5" to={"/"}>
           <HiOutlineHome size={30} />
           <p>Home</p>
