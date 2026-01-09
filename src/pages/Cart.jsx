@@ -12,7 +12,7 @@ const Cart = () => {
           <p className="text-2xl text-gray-400">Your cart is empty</p>
         </div>
       ) : (
-        <div className="flex justify-between">
+        <div className="flex flex-col justify-between">
           <div className="w-full">
             <div className="grid gap-5">
               {cart.map((cartItem, index) => {

@@ -2,10 +2,11 @@ import { GrClose } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { PiUserLight } from "react-icons/pi";
 import { HiOutlineHome } from "react-icons/hi2";
-import { TbCategory } from "react-icons/tb";
-import { PiShoppingCartThin } from "react-icons/pi";
+import { HiOutlineViewGrid } from "react-icons/hi";
+import { HiOutlineShoppingCart } from "react-icons/hi";
+import { HiOutlineUser } from "react-icons/hi";
 
-const Sidebar = ({ isOpen, toggleSideBar }) => {
+const Sidebar = ({ isOpen }) => {
   const sidebarStyle = {
     transform: isOpen ? "translateX(0)" : "translateX(-100%)",
     transition: "transform 0.3s ease",
@@ -30,15 +31,15 @@ const Sidebar = ({ isOpen, toggleSideBar }) => {
           <p>Home</p>
         </Link>
         <Link className="flex items-center gap-5" to={"categories"}>
-          <TbCategory size={30} />
+          <HiOutlineViewGrid size={30} />
           <p>Categories</p>
         </Link>
         <Link className="flex items-center gap-5" to={"cart"}>
-          <PiShoppingCartThin size={30} />
+          <HiOutlineShoppingCart size={30} />
           <p>Cart</p>
         </Link>
         <Link className="flex items-center gap-5" to={"account"}>
-          <PiUserLight size={30} />
+          <HiOutlineUser size={30} />
           <p>Account</p>
         </Link>
       </ul>
