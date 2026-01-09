@@ -1,6 +1,4 @@
-import { GrClose } from "react-icons/gr";
 import { Link } from "react-router-dom";
-import { PiUserLight } from "react-icons/pi";
 import { HiOutlineHome } from "react-icons/hi2";
 import { HiOutlineViewGrid } from "react-icons/hi";
 import { HiOutlineShoppingCart } from "react-icons/hi";
@@ -24,8 +22,9 @@ const Sidebar = ({ isOpen }) => {
   };
 
   return (
-    <div style={sidebarStyle} className="flex">
-      <ul className="flex  flex-col gap-5 text-sm pt-20 pr-10">
+    <div style={sidebarStyle} className="flex flex-col">
+      <p className="font-outfit text-3xl font-medium mt-5">MyStore</p>
+      <ul className="flex flex-col gap-5 text-sm pt-5 pr-10">
         <Link className="flex items-center gap-5" to={"/"}>
           <HiOutlineHome size={30} />
           <p>Home</p>
