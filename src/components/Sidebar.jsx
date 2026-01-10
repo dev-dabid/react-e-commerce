@@ -24,6 +24,13 @@ const Sidebar = ({ isOpen }) => {
 
   const links = ["home", "categories", "cart", "account"];
 
+  const icons = {
+    home: <HiOutlineHome size={25} />,
+    categories: <HiOutlineViewGrid size={25} />,
+    cart: <HiOutlineShoppingCart size={25} />,
+    account: <HiOutlineUser size={25} />,
+  };
+
   return (
     <div style={sidebarStyle} className="flex flex-col px-5">
       <p className="font-outfit text-3xl font-medium mt-5 pl-2 ">MyStore</p>
@@ -38,15 +45,7 @@ const Sidebar = ({ isOpen }) => {
               state={activeLink}
               onClick={() => setActiveLink(link)}
             >
-              {link === "home" ? (
-                <HiOutlineHome size={25} />
-              ) : link === "categories" ? (
-                <HiOutlineViewGrid size={25} />
-              ) : link === "cart" ? (
-                <HiOutlineShoppingCart size={25} />
-              ) : (
-                <HiOutlineUser size={25} />
-              )}
+              {icons[link]}
               <p>{link[0].toUpperCase() + link.slice(1)}</p>
             </Link>
           );
