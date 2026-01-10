@@ -30,7 +30,9 @@ const Header = ({ toggleSideBar }) => {
             </svg>
           </button>
         </div>
-
+        <div className="w-full lg:max-w-80 xl:max-w-120">
+          <Input />
+        </div>
         <div className="flex justify-center items-center gap-10">
           <a href="">
             <div className="flex gap-1">
