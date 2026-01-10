@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { HiOutlineHome } from "react-icons/hi2";
 import { HiOutlineViewGrid } from "react-icons/hi";
 import { HiOutlineShoppingCart } from "react-icons/hi";
@@ -19,38 +20,37 @@ const Sidebar = ({ isOpen }) => {
     width: "256px",
   };
 
+  const [activeLink, setActiveLink] = useState("home");
+
+  const links = ["home", "categories", "cart", "account"];
+
   return (
     <div style={sidebarStyle} className="flex flex-col px-5">
       <p className="font-outfit text-3xl font-medium mt-5 pl-2 ">MyStore</p>
       <ul className="flex flex-col text-sm mt-10">
-        <Link
-          className="flex items-center gap-5 p-2 rounded transition-all hover:bg-gray-200 active:bg-gray-300"
-          to={"/"}
-        >
-          <HiOutlineHome size={30} />
-          <p>Home</p>
-        </Link>
-        <Link
-          className="flex items-center gap-5 p-2 rounded transition-all hover:bg-gray-200 active:bg-gray-300"
-          to={"categories"}
-        >
-          <HiOutlineViewGrid size={30} />
-          <p>Categories</p>
-        </Link>
-        <Link
-          className="flex items-center gap-5 p-2 rounded transition-all hover:bg-gray-200 active:bg-gray-300"
-          to={"cart"}
-        >
-          <HiOutlineShoppingCart size={30} />
-          <p>Cart</p>
-        </Link>
-        <Link
-          className="flex items-center gap-5 p-2 rounded transition-all hover:bg-gray-200 active:bg-gray-300"
-          to={"account"}
-        >
-          <HiOutlineUser size={30} />
-          <p>Account</p>
-        </Link>
+        {links.map((link) => {
+          return (
+            <Link
+              className={`flex items-center gap-5 p-2 rounded transition-all ${
+                activeLink === link ? "bg-gray-200" : ""
+              } hover:bg-gray-200 active:bg-gray-300`}
+              to={`${link === "home" ? "/" : link}`}
+              state={activeLink}
+              onClick={() => setActiveLink(link)}
+            >
+              {link === "home" ? (
+                <HiOutlineHome size={25} />
+              ) : link === "categories" ? (
+                <HiOutlineViewGrid size={25} />
+              ) : link === "cart" ? (
+                <HiOutlineShoppingCart size={25} />
+              ) : (
+                <HiOutlineUser size={25} />
+              )}
+              <p>{link[0].toUpperCase() + link.slice(1)}</p>
+            </Link>
+          );
+        })}
       </ul>
     </div>
   );
