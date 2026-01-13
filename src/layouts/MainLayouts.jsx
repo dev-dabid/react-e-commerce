@@ -6,14 +6,9 @@ import Sidebar from "../components/Sidebar";
 import MobileNav from "../components/MobileNav";
 
 const MainLayout = () => {
-  const fetchProducts = useStore((state) => state.productActions.fetchProducts);
   const cart = useStore((state) => state.cart);
   const [width, setWidth] = useState(window.innerWidth);
   const [isOpen, setIsOpen] = useState(true);
-
-  useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]);
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
