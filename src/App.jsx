@@ -1,24 +1,31 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { SidebarProvider } from "./context/SidebarContext.jsx";
 import { useStore } from "./store/store.js";
 import { useState, useEffect } from "react";
-import MainLayout from "./layouts/MainLayouts.jsx";
+import MainLayout from "./layouts/MainLayout.jsx";
+import CategoryLayout from "./layouts/CategoryLayout.jsx";
 import Home from "./pages/Home.jsx";
-import Cart from "./pages/Cart.jsx";
-import Categories from "./pages/Categories.jsx";
-import Account from "./pages/Account.jsx";
-import Try from "./pages/Try.jsx";
+import CartDetails from "./pages/CartDetails.jsx";
+import CategoryDetails from "./pages/CategoryDetails.jsx";
+import CartLayout from "./layouts/CategoryLayout.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: "categories", element: <Categories /> },
-      { path: "cart", element: <Cart /> },
-      { path: "account", element: <Account /> },
-      { path: "try", element: <Try /> },
-    ],
+    children: [{ index: true, element: <Home /> }],
+  },
+
+  {
+    path: "category",
+    element: <CategoryLayout />,
+    children: [{ index: true, element: <CategoryDetails /> }],
+  },
+
+  {
+    path: "cart",
+    element: <CartLayout />,
+    children: [{ index: true, element: <CartDetails /> }],
   },
 ]);
 
@@ -29,7 +36,11 @@ const App = () => {
     fetchProducts();
   }, [fetchProducts]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <SidebarProvider>
+      <RouterProvider router={router} />;
+    </SidebarProvider>
+  );
 };
 
 export default App;

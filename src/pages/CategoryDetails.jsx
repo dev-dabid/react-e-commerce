@@ -25,10 +25,17 @@ const Categories = () => {
   };
 
   return (
-    <div>
-      {getCategories().map((category, index) => {
-        return <div key={index}>{category}</div>;
-      })}
+    <div className="flex ">
+      <div className="flex flex-col border h-screen wrap-break-word">
+        {getCategories().map((category, index) => {
+          return (
+            <div className="max-w-20 text-center bg-amber-300 " key={index}>
+              {category}
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex-1"></div>
     </div>
   );
 };

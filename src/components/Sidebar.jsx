@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useSidebar } from "../context/SidebarContext";
 import { HiOutlineHome } from "react-icons/hi2";
 import { HiOutlineViewGrid } from "react-icons/hi";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { HiOutlineUser } from "react-icons/hi";
+import { useState, useEffect } from "react";
 
-const Sidebar = ({ isOpen }) => {
+const Sidebar = () => {
+  const { isOpen, setIsOpen } = useSidebar();
+  const [width, setWidth] = useState(window.innerWidth);
+
   const sidebarStyle = {
     transform: isOpen ? "translateX(0)" : "translateX(-100%)",
     transition: "transform 0.3s ease",
@@ -20,13 +24,27 @@ const Sidebar = ({ isOpen }) => {
     width: "256px",
   };
 
-  const [activeLink, setActiveLink] = useState("home");
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
 
-  const links = ["home", "categories", "cart", "account"];
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const isBelow = () => {
+      width < 1024 ? setIsOpen(false) : setIsOpen(true);
+    };
+
+    isBelow();
+  }, [width < 1024]);
+
+  const links = ["home", "category", "cart", "account"];
 
   const icons = {
     home: <HiOutlineHome size={25} />,
-    categories: <HiOutlineViewGrid size={25} />,
+    category: <HiOutlineViewGrid size={25} />,
     cart: <HiOutlineShoppingCart size={25} />,
     account: <HiOutlineUser size={25} />,
   };
@@ -37,17 +55,19 @@ const Sidebar = ({ isOpen }) => {
       <ul className="flex flex-col text-sm mt-10">
         {links.map((link) => {
           return (
-            <Link
-              className={`flex items-center gap-5 p-2 rounded transition-all ${
-                activeLink === link ? "bg-gray-200" : ""
-              } hover:bg-gray-200 active:bg-gray-300`}
-              to={`${link === "home" ? "/" : link}`}
-              state={activeLink}
-              onClick={() => setActiveLink(link)}
+            <NavLink
+              to={link === "home" ? "/" : `/${link}`}
+              className={({ isActive }) =>
+                `flex items-center gap-5 p-2 rounded transition-all ${
+                  isActive
+                    ? "bg-gray-200 text-gray-600 font-bold"
+                    : "hover:bg-gray-200 active:bg-gray-300"
+                }`
+              }
             >
               {icons[link]}
               <p>{link[0].toUpperCase() + link.slice(1)}</p>
-            </Link>
+            </NavLink>
           );
         })}
       </ul>

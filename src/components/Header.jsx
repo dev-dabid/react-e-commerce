@@ -1,13 +1,15 @@
+import { useSidebar } from "../context/SidebarContext";
 import Input from "./Input";
 import CartBadge from "./CartBadge";
 
-const Header = ({ toggleSideBar }) => {
+const Header = () => {
+  const { toggleSidebar } = useSidebar();
   return (
     <div className="bg-white sticky top-0 pb-2 sm:px-5 px-2 py-2 border-b border-solid border-[#e5e5e5]">
       <div className="lg:flex justify-between items-center p-2 hidden">
         <div>
           <button
-            onClick={toggleSideBar}
+            onClick={toggleSidebar}
             className="hover:bg-gray-300 active:bg-gray-200 border border-gray-400"
           >
             <svg
