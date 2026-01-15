@@ -34,7 +34,7 @@ const Card = ({ product }) => {
       <div className="w-full mt-4">
         <button
           onClick={() => addToCart(product.id, product, qty)}
-          className="product-button py-1.5 w-full bg-white hover:bg-amber-300 active:bg-amber-600  rounded-sm border"
+          className="product-button py-1.5 w-full bg-white hover:bg-gray-300 active:bg-gray-200  rounded-sm border"
         >
           Add to cart
         </button>
