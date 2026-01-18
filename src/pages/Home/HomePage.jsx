@@ -1,5 +1,5 @@
-import { useStore } from "../store/store";
-import ProductCard from "../components/ProductCard";
+import { useStore } from "../../store/store";
+import ProductCard from "../../components/ProductCard";
 
 const Home = () => {
   const masterProducts = useStore((state) => state.products);

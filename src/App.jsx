@@ -4,28 +4,41 @@ import { useStore } from "./store/store.js";
 import { useState, useEffect } from "react";
 import MainLayout from "./layouts/MainLayout.jsx";
 import CategoryLayout from "./layouts/CategoryLayout.jsx";
-import Home from "./pages/Home.jsx";
-import CartDetails from "./pages/CartDetails.jsx";
-import CategoryDetails from "./pages/CategoryDetails.jsx";
 import CartLayout from "./layouts/CategoryLayout.jsx";
+import AccountLayout from "./layouts/AccountLayout.jsx";
+import HomePage from "./pages/Home/HomePage.js";
+import CategoryPage from "./pages/Category/CategoryPage.jsx";
+import CartPage from "./pages/Cart/CartPage.jsx";
+import AccountPage from "./pages/Account/AccountPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    children: [{ index: true, element: <Home /> }],
+    children: [{ index: true, element: <HomePage /> }],
   },
 
   {
     path: "category",
     element: <CategoryLayout />,
-    children: [{ index: true, element: <CategoryDetails /> }],
+    children: [{ index: true, element: <CategoryPage /> }],
   },
 
   {
     path: "cart",
     element: <CartLayout />,
-    children: [{ index: true, element: <CartDetails /> }],
+    children: [{ index: true, element: <CartPage /> }],
+  },
+
+  {
+    path: "account",
+    element: <AccountLayout />,
+    children: [
+      {
+        index: true,
+        element: <AccountPage />,
+      },
+    ],
   },
 ]);
 

@@ -1,5 +1,5 @@
-import { useStore } from "../store/store";
-import CartItemCard from "../components/CartItemCard";
+import { useStore } from "../../store/store";
+import CartItemCard from "../../components/CartItemCard";
 
 const Cart = () => {
   const cart = useStore((state) => state.cart);
