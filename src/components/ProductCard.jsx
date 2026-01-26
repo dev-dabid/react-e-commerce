@@ -10,7 +10,7 @@ const Card = ({ product }) => {
     <div className="flex flex-col p-3">
       <div className="w-full flex p-5 justify-center">
         <img
-          className="object-contain h-auto object-center max-w-full aspect-square"
+          className="object-contain h-auto object-center w-full aspect-square"
           src={product.image}
           alt=""
         />

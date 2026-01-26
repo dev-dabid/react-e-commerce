@@ -1,12 +1,13 @@
 import { useStore } from "../../store/store";
 import { useState, useEffect } from "react";
+import ProductCart from "../../components/ProductCard";
 
 const Categories = () => {
   const products = useStore((state) => state.products);
 
   const getCategories = () => {
     const catObjs = {};
-    const catArr = [];
+    const catArr = ["All"].sort();
 
     products.forEach((product) => {
       catObjs[product.category] = true;
@@ -25,17 +26,24 @@ const Categories = () => {
   };
 
   return (
-    <div className="flex ">
-      <div className="flex flex-col border h-screen wrap-break-word">
-        {getCategories().map((category, index) => {
-          return (
-            <div className="max-w-20 text-center bg-amber-300 " key={index}>
+    <div className="flex h-screen overflow-hidden">
+      <div className="w-24 md:w-32 h-full bg-gray-100 overflow-y-auto border-r border-gray-200">
+        {getCategories().map((category, index) => (
+          <div
+            className="w-full text-center bg-amber-300 hover:bg-amber-400 cursor-pointer transition-colors"
+            key={index}
+          >
+            <p className="text-xs p-2 leading-tight wrap-break-word">
               {category}
-            </div>
-          );
-        })}
+            </p>
+          </div>
+        ))}
       </div>
-      <div className="flex-1"></div>
+      <div className="flex-1 grid grid-cols-2 xl:grid-cols-5 gap-2 p-1 overflow-y-auto bg-white">
+        {products.map((product) => (
+          <ProductCart key={product.id} product={product} />
+        ))}
+      </div>
     </div>
   );
 };

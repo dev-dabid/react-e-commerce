@@ -7,7 +7,7 @@ const CartLayout = () => {
   const { isOpen } = useSidebar();
   return (
     <main
-      className={`relative transition-all duration-300  ${
+      className={`relative transition-all sm:duration-300  ${
         isOpen ? "ml-64" : "ml-0"
       }`}
     >

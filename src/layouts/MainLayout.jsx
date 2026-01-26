@@ -12,14 +12,13 @@ const MainLayout = () => {
 
   return (
     <main
-      className={`relative transition-all duration-300  ${
+      className={`relative transition-all sm:duration-300  ${
         isOpen ? "ml-64" : "ml-0"
       }`}
     >
       <Header />
       <Sidebar />
       <Outlet context={cart} />
-
       <MobileNav />
     </main>
   );

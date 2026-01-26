@@ -6,7 +6,7 @@ import MainLayout from "./layouts/MainLayout.jsx";
 import CategoryLayout from "./layouts/CategoryLayout.jsx";
 import CartLayout from "./layouts/CategoryLayout.jsx";
 import AccountLayout from "./layouts/AccountLayout.jsx";
-import HomePage from "./pages/Home/HomePage.js";
+import HomePage from "./pages/Home/HomePage.jsx";
 import CategoryPage from "./pages/Category/CategoryPage.jsx";
 import CartPage from "./pages/Cart/CartPage.jsx";
 import AccountPage from "./pages/Account/AccountPage.jsx";
@@ -51,7 +51,7 @@ const App = () => {
 
   return (
     <SidebarProvider>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </SidebarProvider>
   );
 };
