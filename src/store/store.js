@@ -20,6 +20,8 @@ const createProductSlice = (set, get) => ({
     },
 
     searchProducts: (keyword) => set(() => ({ searchQuery: keyword })),
+
+    selectCategory: (category) => set(() => ({ currentCategory: category })),
   },
 });
 
@@ -35,7 +37,7 @@ const createCartSlice = (set, get) => ({
           cart: state.cart.map((item) =>
             item.id === productId
               ? { ...item, quantity: item.quantity + selectedQty }
-              : item
+              : item,
           ),
         }));
       } else {
