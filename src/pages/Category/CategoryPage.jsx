@@ -53,10 +53,12 @@ const Categories = () => {
           </button>
         ))}
       </div>
-      <div className="flex-1 grid grid-cols-2 xl:grid-cols-5 gap-2 p-1 overflow-y-auto bg-white">
-        {filteredProducts.map((product) => (
-          <ProductCart key={product.id} product={product} />
-        ))}
+      <div className="flex-1  overflow-y-auto">
+        <div className=" grid grid-cols-1 xl:grid-cols-5 gap-2 p-1 bg-white">
+          {filteredProducts.map((product) => (
+            <ProductCart key={product.id} product={product} />
+          ))}
+        </div>
       </div>
     </div>
   );
