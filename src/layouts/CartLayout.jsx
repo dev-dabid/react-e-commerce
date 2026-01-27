@@ -2,7 +2,7 @@ import CartDetails from "../pages/CartDetails";
 
 const CartLayout = () => {
   return (
-    <div>
+    <div className="">
       <CartDetails />
     </div>
   );

@@ -17,8 +17,9 @@ const Card = ({ product }) => {
       </div>
       <p className="text-lg/normal truncate">{product.title}</p>
       <div className="flex justify-between">
-        <p className="text-xl font-medium">${product.price}</p>
+        <p className="text-md sm:text-xl font-medium">${product.price}</p>
         <select
+          className="text-center"
           onChange={(e) => setQty(Number(e.target.value))}
           name={product.id}
         >
@@ -34,7 +35,7 @@ const Card = ({ product }) => {
       <div className="w-full mt-4">
         <button
           onClick={() => addToCart(product.id, product, qty)}
-          className="product-button py-1.5 w-full bg-white hover:bg-gray-300 active:bg-gray-200  rounded-sm border"
+          className="product-button py-1.5 w-full bg-white hover:bg-gray-300 active:bg-gray-200  rounded-sm border text-sm sm:text-lg"
         >
           Add to cart
         </button>

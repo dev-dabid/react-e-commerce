@@ -40,7 +40,7 @@ const Categories = () => {
 
   return (
     <div className="flex h-screen overflow-hidden">
-      <div className="w-24 md:w-32 h-full bg-gray-100 overflow-y-auto border-r border-gray-200">
+      <div className="w-30 md:w-32 h-full bg-gray-100 overflow-y-auto border-r border-gray-200">
         {getCategories().map((category, index) => (
           <button
             key={index}
@@ -54,7 +54,7 @@ const Categories = () => {
         ))}
       </div>
       <div className="flex-1  overflow-y-auto">
-        <div className=" grid grid-cols-1 xl:grid-cols-5 gap-2 p-1 bg-white">
+        <div className=" grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-1 p-1 bg-white">
           {filteredProducts.map((product) => (
             <ProductCart key={product.id} product={product} />
           ))}
