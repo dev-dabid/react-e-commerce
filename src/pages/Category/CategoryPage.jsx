@@ -38,14 +38,22 @@ const Categories = () => {
     });
   };
 
+  const [activeCat, setActiveCat] = useState(currentCategory);
+
+  const changeCategory = (e, category) => {
+    selectCategory(e.target.innerText.toLowerCase());
+    setActiveCat(category);
+    console.log(category);
+  };
+
   return (
     <div className="flex h-screen overflow-hidden">
       <div className="w-30 md:w-32 h-full bg-gray-100 overflow-y-auto border-r border-gray-200">
         {getCategories().map((category, index) => (
           <button
             key={index}
-            className="bg-red-50 w-full"
-            onClick={(e) => selectCategory(e.target.innerText.toLowerCase())}
+            className={`${category.toLowerCase() === activeCat ? "bg-red-400" : ""} w-full`}
+            onClick={(e) => changeCategory(e, category.toLowerCase())}
           >
             <p className="text-xs p-2 leading-tight wrap-break-word">
               {category}
@@ -54,7 +62,7 @@ const Categories = () => {
         ))}
       </div>
       <div className="flex-1  overflow-y-auto">
-        <div className=" grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-1 p-1 bg-white">
+        <div className=" grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-1 p-1 bg-white">
           {filteredProducts.map((product) => (
             <ProductCart key={product.id} product={product} />
           ))}
