@@ -52,7 +52,7 @@ const Categories = () => {
         {getCategories().map((category, index) => (
           <button
             key={index}
-            className={`${category.toLowerCase() === activeCat ? "bg-red-400" : ""} w-full`}
+            className={`${category.toLowerCase() === activeCat ? "bg-gray-300" : ""} w-full hover:bg-gray-300 active:bg-gray-400`}
             onClick={(e) => changeCategory(e, category.toLowerCase())}
           >
             <p className="text-xs p-2 leading-tight wrap-break-word">
