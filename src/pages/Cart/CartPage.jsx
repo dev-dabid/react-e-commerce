@@ -5,9 +5,9 @@ const Cart = () => {
   const cart = useStore((state) => state.cart);
 
   return (
-    <div className="flex w-full">
+    <div className="">
       {cart.length === 0 ? (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center absolute w-full h-full">
           <p className="text-2xl text-gray-400">Your cart is empty</p>
         </div>
       ) : (
