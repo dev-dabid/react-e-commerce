@@ -15,7 +15,9 @@ const Cart = () => {
           <div className="w-full">
             <div className="grid gap-5">
               {cart.map((cartItem, index) => {
-                return <CartItemCard item={cartItem} key={index} />;
+                return (
+                  <CartItemCard key={index} index={index + 1} item={cartItem} />
+                );
               })}
             </div>
           </div>
