@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const CartBadge = () => {
   const count = useStore((state) =>
-    state.cart.reduce((total, item) => total + item.quantity, 0)
+    state.cart.reduce((total, item) => total + item.quantity, 0),
   );
 
   return (

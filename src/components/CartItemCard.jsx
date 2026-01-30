@@ -1,12 +1,12 @@
 import { useStore } from "../store/store";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Counter from "./Counter";
 import { HiOutlineTrash } from "react-icons/hi";
 
 const CartItemCard = ({ index, item, handleAskDelete }) => {
   const { id, image, title, price, quantity } = item;
-  const [count, setCount] = useState(quantity);
   const updateQuantity = useStore((state) => state.cartActions.updateQuantity);
+  const [count, setCount] = useState(quantity);
 
   return (
     <div
@@ -26,7 +26,12 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
               {title}
             </p>
             <div className="">
-              <Counter id={id} count={count} updateQuantity={updateQuantity} />
+              <Counter
+                id={id}
+                count={count}
+                setCount={setCount}
+                updateQuantity={updateQuantity}
+              />
             </div>
           </div>
           <div className="flex items-start">

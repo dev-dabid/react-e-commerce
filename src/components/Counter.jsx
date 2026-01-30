@@ -1,15 +1,21 @@
-import { useState } from "react";
-
-const Counter = ({ id, count, updateQuantity }) => {
+const Counter = ({ id, count, setCount, updateQuantity }) => {
   return (
-    <div className="flex items-center">
-      <button className="bg-gray-400 max-w-10 w-full rounded-l-2xl">
+    <div className="flex items-center max-w-[120px]">
+      <button
+        className="bg-gray-400 max-w-10 w-full rounded-l-2xl"
+        onClick={() =>
+          setCount((prev) => {
+            const next = prev + 1;
+            updateQuantity(id, next);
+            return next;
+          })
+        }
+      >
         <span className="text-lg font-medium text-white">+</span>
       </button>
-      <div className="max-w-5">
+      <div className="max-w-[clamp(20px,7vw,100px)]">
         <input
-          className="max-w-[clamp(20px,2vw,13px)] text-center"
-          type="text"
+          className="text-center w-full"
           onChange={(e) => {
             const newQty = Number(e.target.value);
             if (newQty < 1 || newQty > 100) return;
@@ -25,7 +31,16 @@ const Counter = ({ id, count, updateQuantity }) => {
         />
       </div>
 
-      <button className="bg-gray-400 max-w-10 w-full rounded-r-2xl">
+      <button
+        className="bg-gray-400 max-w-10 w-full rounded-r-2xl"
+        onClick={() =>
+          setCount((prev) => {
+            const next = prev - 1;
+            updateQuantity(id, next);
+            return next;
+          })
+        }
+      >
         <span className="text-lg font-medium text-white">-</span>
       </button>
     </div>
