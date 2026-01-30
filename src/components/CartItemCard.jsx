@@ -1,13 +1,10 @@
 import { useStore } from "../store/store";
 import { useState } from "react";
 
-const CartItemCard = ({ index, item }) => {
+const CartItemCard = ({ index, item, handleAskDelete }) => {
   const { id, image, title, price, quantity } = item;
   const [count, setCount] = useState(quantity);
   const updateQuantity = useStore((state) => state.cartActions.updateQuantity);
-  const removeCartItem = useStore((state) => state.cartActions.removeCartItem);
-
-  console.log(index);
 
   return (
     <div
@@ -50,7 +47,7 @@ const CartItemCard = ({ index, item }) => {
               <h1>${price}</h1>
               <button
                 className="bg-red-400  p-1 text-white"
-                onClick={() => removeCartItem(id)}
+                onClick={() => handleAskDelete(id)}
               >
                 remove
               </button>
