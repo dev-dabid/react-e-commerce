@@ -48,7 +48,7 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
               <h1 className="font-bold mb-5">${price}</h1>
               <div className="justify-end flex">
                 <button
-                  className="bg-red-400  p-1 text-white"
+                  className="bg-gray-400 rounded   p-1 text-white text-2xl"
                   onClick={() => handleAskDelete(id)}
                 >
                   <HiOutlineTrash />
