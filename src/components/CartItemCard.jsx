@@ -1,5 +1,6 @@
 import { useStore } from "../store/store";
 import { useState } from "react";
+import { HiOutlineTrash } from "react-icons/hi";
 
 const CartItemCard = ({ index, item, handleAskDelete }) => {
   const { id, image, title, price, quantity } = item;
@@ -20,7 +21,7 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
         </div>
         <div className="flex justify-between items-start gap-5 flex-1">
           <div>
-            <p className="text-sm line-clamp-1 sm:line-clamp-3 md:line-clamp-none">
+            <p className="text-sm line-clamp-1 sm:line-clamp-3 md:line-clamp-none font-medium mb-5">
               {title}
             </p>
             <div className="">
@@ -43,14 +44,16 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
             </div>
           </div>
           <div className="flex items-start">
-            <div className="flex flex-col">
-              <h1>${price}</h1>
-              <button
-                className="bg-red-400  p-1 text-white"
-                onClick={() => handleAskDelete(id)}
-              >
-                remove
-              </button>
+            <div className="flex flex-col justify-end">
+              <h1 className="font-bold mb-5">${price}</h1>
+              <div className="justify-end flex">
+                <button
+                  className="bg-red-400  p-1 text-white"
+                  onClick={() => handleAskDelete(id)}
+                >
+                  <HiOutlineTrash />
+                </button>
+              </div>
             </div>
           </div>
         </div>
