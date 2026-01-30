@@ -1,5 +1,6 @@
 import { useStore } from "../store/store";
 import { useState } from "react";
+import Counter from "./Counter";
 import { HiOutlineTrash } from "react-icons/hi";
 
 const CartItemCard = ({ index, item, handleAskDelete }) => {
@@ -21,31 +22,16 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
         </div>
         <div className="flex justify-between items-start gap-5 flex-1">
           <div>
-            <p className="text-sm line-clamp-1 sm:line-clamp-3 md:line-clamp-none font-medium mb-5">
+            <p className="text-md line-clamp-1 sm:line-clamp-3 md:line-clamp-none font-medium mb-5">
               {title}
             </p>
             <div className="">
-              <input
-                onChange={(e) => {
-                  const newQty = Number(e.target.value);
-                  if (newQty < 1 || newQty > 100) return;
-                  setCount(newQty);
-                  updateQuantity(id, newQty);
-                }}
-                className="text-center disabled:opacity-50 disabled:cursor-not-allowed"
-                type="number"
-                id="quantity"
-                name="quantity"
-                min={0}
-                max={100}
-                step="1"
-                value={count}
-              />
+              <Counter id={id} count={count} updateQuantity={updateQuantity} />
             </div>
           </div>
           <div className="flex items-start">
             <div className="flex flex-col justify-end">
-              <h1 className="font-bold mb-5">${price}</h1>
+              <h1 className="font-bold mb-5 xl:text-lg">${price}</h1>
               <div className="justify-end flex">
                 <button
                   className="bg-gray-400 rounded   p-1 text-white text-2xl"
