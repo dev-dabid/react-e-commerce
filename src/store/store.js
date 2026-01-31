@@ -50,6 +50,13 @@ const createCartSlice = (set, get) => ({
       }
     },
 
+    checkAllCartItem: (checkVal) =>
+      set((state) => ({
+        cart: state.cart.map((item) => {
+          return { ...item, isChecked: checkVal };
+        }),
+      })),
+
     checkCartItem: (id, checkVal) =>
       set((state) => ({
         cart: state.cart.map((item) => {

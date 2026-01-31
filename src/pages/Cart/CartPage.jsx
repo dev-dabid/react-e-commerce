@@ -4,6 +4,10 @@ import CartItemCard from "../../components/CartItemCard";
 
 const Cart = () => {
   const cart = useStore((state) => state.cart);
+  const [allChecked, setAllChecked] = useState(false);
+  const checkAllCartItem = useStore(
+    (state) => state.cartActions.checkAllCartItem,
+  );
   const removeCartItem = useStore((state) => state.cartActions.removeCartItem);
 
   const [showConfirm, setShowConfirm] = useState(false);
@@ -61,23 +65,37 @@ const Cart = () => {
           <p className="text-2xl text-gray-400">Your cart is empty</p>
         </div>
       ) : (
-        <div className="flex flex-col justify-between">
-          <div className="w-full">
-            <div className="grid gap-5">
-              {cart.map((cartItem, index) => {
-                return (
-                  <CartItemCard
-                    key={index}
-                    index={index + 1}
-                    item={cartItem}
-                    handleAskDelete={handleAskDelete}
-                  />
-                );
-              })}
+        <div className="flex">
+          <div className=""></div>
+          <div className="flex flex-col justify-between w-full">
+            <div className="w-full">
+              <div className="p-4 flex gap-3">
+                <input
+                  type="checkbox"
+                  onChange={(e) => {
+                    setAllChecked(e.target.checked);
+                    checkAllCartItem(e.target.checked);
+                  }}
+                  checked={allChecked}
+                />
+                <p className="font-medium">Check all</p>
+              </div>
+              <div className="grid gap-5">
+                {cart.map((cartItem, index) => {
+                  return (
+                    <CartItemCard
+                      key={index}
+                      index={index + 1}
+                      item={cartItem}
+                      handleAskDelete={handleAskDelete}
+                    />
+                  );
+                })}
+              </div>
             </div>
-          </div>
-          <div>
-            <p>checkout</p>
+            <div>
+              <p>checkout</p>
+            </div>
           </div>
         </div>
       )}
