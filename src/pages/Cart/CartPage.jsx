@@ -33,7 +33,7 @@ const Cart = () => {
     <div className="">
       {showConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="w-full max-w-sm rounded-lg bg-white p-6 shadow-lg">
+          <div className="w-full max-w-[280px] md:max-w-[320px] rounded-lg bg-white p-6 shadow-lg">
             <p className="mb-4 text-center text-lg font-medium">
               Do you want to delete this product?
             </p>
