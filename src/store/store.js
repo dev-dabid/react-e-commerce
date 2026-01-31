@@ -47,6 +47,13 @@ const createCartSlice = (set, get) => ({
       }
     },
 
+    checkCartItem: (id, checkVal) =>
+      set((state) => ({
+        cart: state.cart.map((item) => {
+          return item.id === id ? { ...item, isChecked: checkVal } : item;
+        }),
+      })),
+
     removeCartItem: (id) =>
       set((state) => ({
         cart: state.cart.filter((item) => {

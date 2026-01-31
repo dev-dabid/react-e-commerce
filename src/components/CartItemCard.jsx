@@ -6,7 +6,9 @@ import { HiOutlineTrash } from "react-icons/hi";
 const CartItemCard = ({ index, item, handleAskDelete }) => {
   const { id, image, title, price, quantity } = item;
   const updateQuantity = useStore((state) => state.cartActions.updateQuantity);
+  const checkCartItem = useStore((state) => state.cartActions.checkCartItem);
   const [count, setCount] = useState(quantity);
+  const [checked, setChecked] = useState(false);
 
   return (
     <div
@@ -14,7 +16,14 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
     >
       <div className="flex items-center w-full">
         <div>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            checked={checked}
+            onChange={(e) => {
+              setChecked(e.target.checked);
+              checkCartItem(id, e.target.checked);
+            }}
+          />
         </div>
         <div className="max-w-[clamp(60px,20vw,100px)] mr-2">
           <img
