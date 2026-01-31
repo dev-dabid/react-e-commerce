@@ -42,7 +42,10 @@ const createCartSlice = (set, get) => ({
         }));
       } else {
         set((state) => ({
-          cart: [...state.cart, { ...product, quantity: selectedQty }],
+          cart: [
+            ...state.cart,
+            { ...product, quantity: selectedQty, isChecked: true },
+          ],
         }));
       }
     },

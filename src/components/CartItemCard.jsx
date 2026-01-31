@@ -4,11 +4,10 @@ import Counter from "./Counter";
 import { HiOutlineTrash } from "react-icons/hi";
 
 const CartItemCard = ({ index, item, handleAskDelete }) => {
-  const { id, image, title, price, quantity } = item;
+  const { id, image, title, price, quantity, isChecked } = item;
   const updateQuantity = useStore((state) => state.cartActions.updateQuantity);
   const checkCartItem = useStore((state) => state.cartActions.checkCartItem);
   const [count, setCount] = useState(quantity);
-  const [checked, setChecked] = useState(false);
 
   return (
     <div
@@ -18,9 +17,8 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
         <div>
           <input
             type="checkbox"
-            checked={checked}
+            checked={isChecked}
             onChange={(e) => {
-              setChecked(e.target.checked);
               checkCartItem(id, e.target.checked);
             }}
           />
