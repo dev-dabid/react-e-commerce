@@ -1,8 +1,11 @@
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { IoIosRemoveCircleOutline } from "react-icons/io";
+
 const Counter = ({ id, count, setCount, updateQuantity }) => {
   return (
     <div className="flex items-center max-w-[120px]">
       <button
-        className="bg-gray-400 max-w-10 w-full rounded-l-2xl"
+        className="bg-gray-400 py-1 px-2 rounded-lg"
         onClick={() =>
           setCount((prev) => {
             const next = prev + 1;
@@ -11,9 +14,11 @@ const Counter = ({ id, count, setCount, updateQuantity }) => {
           })
         }
       >
-        <span className="text-lg font-medium text-white">+</span>
+        <p className="text-lg font-medium text-white">
+          <IoIosAddCircleOutline />
+        </p>
       </button>
-      <div className="max-w-[clamp(20px,7vw,100px)]">
+      <div className="max-w-[clamp(25px,15vw,100px)]">
         <input
           className="text-center w-full"
           onChange={(e) => {
@@ -32,7 +37,7 @@ const Counter = ({ id, count, setCount, updateQuantity }) => {
       </div>
 
       <button
-        className="bg-gray-400 max-w-10 w-full rounded-r-2xl"
+        className="bg-gray-400 py-1 px-2 rounded-lg"
         onClick={() =>
           setCount((prev) => {
             const next = prev - 1;
@@ -41,7 +46,9 @@ const Counter = ({ id, count, setCount, updateQuantity }) => {
           })
         }
       >
-        <span className="text-lg font-medium text-white">-</span>
+        <p className="text-lg font-medium text-white">
+          <IoIosRemoveCircleOutline />
+        </p>
       </button>
     </div>
   );

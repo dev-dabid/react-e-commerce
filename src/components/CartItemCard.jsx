@@ -13,7 +13,10 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
       className={`${index % 2 === 0 ? "text-red-200" : ""}relative flex justify-center py-5 px-4 border-b-2 border-gray-200`}
     >
       <div className="flex items-center w-full">
-        <div className="max-w-25 mr-2">
+        <div>
+          <input type="checkbox" />
+        </div>
+        <div className="max-w-[clamp(60px,20vw,100px)] mr-2">
           <img
             className="object-contain h-auto object-center w-full aspect-square"
             src={image}
@@ -21,7 +24,7 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
           />
         </div>
         <div className="flex justify-between items-start gap-5 flex-1">
-          <div>
+          <div className="flex-1">
             <p className="text-md line-clamp-1 sm:line-clamp-3 md:line-clamp-none font-medium mb-5">
               {title}
             </p>
@@ -34,7 +37,7 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
               />
             </div>
           </div>
-          <div className="flex items-start">
+          <div className="flex items-start max-w-30">
             <div className="flex flex-col justify-end">
               <h1 className="font-bold mb-5 xl:text-lg">${price}</h1>
               <div className="justify-end flex">
