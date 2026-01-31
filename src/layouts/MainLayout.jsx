@@ -9,6 +9,13 @@ import MobileNav from "../components/MobileNav";
 const MainLayout = () => {
   const cart = useStore((state) => state.cart);
   const { isOpen, setIsOpen } = useSidebar();
+  const searchProducts = useStore(
+    (state) => state.productActions.searchProducts,
+  );
+
+  useEffect(() => {
+    searchProducts("");
+  }, [searchProducts]);
 
   return (
     <main
