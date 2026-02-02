@@ -25,7 +25,7 @@ const Counter = ({ id, count, setCount, updateQuantity }) => {
             const newQty = Number(e.target.value);
             if (newQty < 1 || newQty > 100) return;
             setCount(newQty);
-            updateQuantity(id, newQty);
+            updateQuantity(id, count);
           }}
           id="quantity"
           name="quantity"

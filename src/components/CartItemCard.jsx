@@ -7,7 +7,11 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
   const { id, image, title, price, quantity, isChecked } = item;
   const updateQuantity = useStore((state) => state.cartActions.updateQuantity);
   const checkCartItem = useStore((state) => state.cartActions.checkCartItem);
-  const [count, setCount] = useState(quantity);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setCount(quantity);
+  });
 
   return (
     <div
