@@ -38,7 +38,7 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
             <div className="">
               <Counter
                 id={id}
-                count={count}
+                count={item.quantity}
                 setCount={setCount}
                 updateQuantity={updateQuantity}
               />
