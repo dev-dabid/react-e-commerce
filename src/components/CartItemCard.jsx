@@ -11,7 +11,7 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
 
   useEffect(() => {
     setCount(quantity);
-  });
+  }, [quantity]);
 
   return (
     <div

@@ -64,6 +64,15 @@ const createCartSlice = (set, get) => ({
         }),
       })),
 
+    removeAllCartItem: () =>
+      set((state) => ({
+        cart: state.cart.filter((item) => {
+          if (item.isChecked === false) {
+            return item;
+          }
+        }),
+      })),
+
     removeCartItem: (id) =>
       set((state) => ({
         cart: state.cart.filter((item) => {

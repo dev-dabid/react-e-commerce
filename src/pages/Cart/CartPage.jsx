@@ -2,12 +2,17 @@ import { useStore } from "../../store/store";
 import { useState } from "react";
 import CartItemCard from "../../components/CartItemCard";
 import CartTotal from "../../components/CartTotal";
+import { HiOutlineTrash } from "react-icons/hi";
 
 const Cart = () => {
   const cart = useStore((state) => state.cart);
   const [allChecked, setAllChecked] = useState(false);
   const checkAllCartItem = useStore(
     (state) => state.cartActions.checkAllCartItem,
+  );
+
+  const removeAllCartItem = useStore(
+    (state) => state.cartActions.removeAllCartItem,
   );
   const removeCartItem = useStore((state) => state.cartActions.removeCartItem);
 
@@ -70,17 +75,29 @@ const Cart = () => {
           <div className=""></div>
           <div className="flex flex-col justify-between w-full">
             <div className="w-full">
-              <div className="p-4 flex gap-3">
-                <input
-                  type="checkbox"
-                  onChange={(e) => {
-                    setAllChecked(e.target.checked);
-                    checkAllCartItem(e.target.checked);
-                  }}
-                  checked={allChecked}
-                />
-                <p className="font-medium">Check all</p>
+              <div className="p-4 flex gap-3 justify-between">
+                <div className="flex gap-3">
+                  <input
+                    type="checkbox"
+                    onChange={(e) => {
+                      setAllChecked(e.target.checked);
+                      checkAllCartItem(e.target.checked);
+                    }}
+                    checked={allChecked}
+                  />
+                  <p className="font-medium">Check all</p>
+                </div>
+                <div className="flex gap-2">
+                  <p>DELETE</p>
+                  <button
+                    className="bg-gray-400 rounded   p-1 text-white text-2xl"
+                    onClick={() => removeAllCartItem()}
+                  >
+                    <HiOutlineTrash />
+                  </button>
+                </div>
               </div>
+
               <div className="grid gap-5">
                 {cart.map((cartItem, index) => {
                   return (
