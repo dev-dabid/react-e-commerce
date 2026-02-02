@@ -1,6 +1,7 @@
 import { useStore } from "../../store/store";
 import { useState } from "react";
 import CartItemCard from "../../components/CartItemCard";
+import CartTotal from "../../components/CartTotal";
 
 const Cart = () => {
   const cart = useStore((state) => state.cart);
@@ -94,7 +95,7 @@ const Cart = () => {
               </div>
             </div>
             <div>
-              <p>checkout</p>
+              <CartTotal />
             </div>
           </div>
         </div>
