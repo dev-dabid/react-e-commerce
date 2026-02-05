@@ -1,5 +1,6 @@
 import { useSidebar } from "../context/SidebarContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import { HiArrowLeft } from "react-icons/hi2";
 import Input from "./Input";
 import CartBadge from "./CartBadge";
@@ -8,6 +9,21 @@ const Header = () => {
   const { toggleSidebar } = useSidebar();
   const location = useLocation();
   const navigate = useNavigate();
+
+  const prevPathRef = useRef(null);
+
+  useEffect(() => {
+    if (prevPathRef.current) {
+      sessionStorage.setItem("lastRoute", prevPathRef.current);
+    }
+
+    prevPathRef.current = location.pathname;
+  }, [location.pathname]);
+
+  const last = sessionStorage.getItem("lastRoute");
+
+  console.log(last);
+
   return (
     <div className="z-50 bg-white sticky top-0 pb-2 sm:px-5 px-2 py-2 border-b border-solid border-[#e5e5e5]">
       <div className="lg:flex justify-between items-center p-2 hidden">
@@ -59,16 +75,14 @@ const Header = () => {
       ) : (
         <div className="lg:hidden px-1 mt-1 flex gap-3">
           <div className="flex items-center gap-2">
-            <button onClick={() => navigate(-1)}>
+            <button onClick={() => navigate("/")}>
               <HiArrowLeft size={32} />
             </button>
             <p className="font-medium text-2xl">
               {location.pathname[1].toUpperCase() + location.pathname.slice(2)}
             </p>
           </div>
-          <div className="w-full">
-            <Input />
-          </div>
+          <div className="w-full"></div>
         </div>
       )}
     </div>
