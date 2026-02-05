@@ -80,12 +80,14 @@ const createCartSlice = (set, get) => ({
         }),
       })),
 
-    updateQuantity: (id, newQty) =>
+    updateQuantity: (id, newQty) => {
+      if (Number.isNaN(newQty)) return;
       set((state) => ({
         cart: state.cart.map((item) => {
           return item.id === id ? { ...item, quantity: newQty } : item;
         }),
-      })),
+      }));
+    },
 
     resetCart: () => set({ cart: [] }),
   },

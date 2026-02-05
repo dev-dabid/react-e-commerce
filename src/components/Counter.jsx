@@ -8,6 +8,7 @@ const Counter = ({ id, count, setCount, updateQuantity }) => {
         className="bg-gray-400 py-1 px-2 rounded-lg"
         onClick={() =>
           setCount((prev) => {
+            if (prev >= 50) return prev;
             const next = prev + 1;
             updateQuantity(id, next);
             return next;
@@ -23,14 +24,14 @@ const Counter = ({ id, count, setCount, updateQuantity }) => {
           className="text-center w-full"
           onChange={(e) => {
             const newQty = Number(e.target.value);
-            if (newQty < 1 || newQty > 100) return;
+            if (newQty < 1 || newQty > 50) return;
             setCount(newQty);
             updateQuantity(id, count);
           }}
           id="quantity"
           name="quantity"
           min={0}
-          max={100}
+          max={50}
           step="1"
           value={count}
         />
@@ -40,6 +41,8 @@ const Counter = ({ id, count, setCount, updateQuantity }) => {
         className="bg-gray-400 py-1 px-2 rounded-lg"
         onClick={() =>
           setCount((prev) => {
+            console.log(prev);
+            if (prev <= 1) return prev;
             const next = prev - 1;
             updateQuantity(id, next);
             return next;
