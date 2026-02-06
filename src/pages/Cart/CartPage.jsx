@@ -73,10 +73,10 @@ const Cart = () => {
       ) : (
         <div className="flex">
           <div className=""></div>
-          <div className="flex flex-col justify-between w-full">
-            <div className="w-full">
+          <div className="flex flex-col 2xl:flex-row justify-between w-full 2xl:mr-112">
+            <div className="flex-1">
               <div className="p-4 flex gap-3 justify-between">
-                <div className="flex gap-3">
+                <div className="flex gap-3 items-center">
                   <input
                     type="checkbox"
                     onChange={(e) => {
@@ -87,7 +87,7 @@ const Cart = () => {
                   />
                   <p className="font-medium">Check all</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 items-center font-medium">
                   <p>DELETE</p>
                   <button
                     className="bg-gray-400 rounded   p-1 text-white text-2xl"
@@ -111,7 +111,7 @@ const Cart = () => {
                 })}
               </div>
             </div>
-            <div>
+            <div className="w-full 2xl:max-w-md 2xl:fixed right-0">
               <CartTotal />
             </div>
           </div>
