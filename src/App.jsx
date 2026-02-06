@@ -9,6 +9,7 @@ import AccountLayout from "./layouts/AccountLayout.jsx";
 import HomePage from "./pages/Home/HomePage.jsx";
 import CategoryPage from "./pages/Category/CategoryPage.jsx";
 import CartPage from "./pages/Cart/CartPage.jsx";
+import SuccessPage from "./pages/Cart/SuccessPage.jsx";
 import AccountPage from "./pages/Account/AccountPage.jsx";
 
 const router = createBrowserRouter([
@@ -27,7 +28,10 @@ const router = createBrowserRouter([
   {
     path: "cart",
     element: <CartLayout />,
-    children: [{ index: true, element: <CartPage /> }],
+    children: [
+      { index: true, element: <CartPage /> },
+      { path: "success", element: <SuccessPage /> },
+    ],
   },
 
   {

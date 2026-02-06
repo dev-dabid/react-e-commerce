@@ -1,10 +1,20 @@
-import CartPage from "../pages/Cart/CartPage";
+import { useSidebar } from "../context/SidebarContext";
+import { Outlet } from "react-router-dom";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 
 const CartLayout = () => {
+  const { isOpen } = useSidebar();
   return (
-    <div className="">
-      <CartPage />
-    </div>
+    <main
+      className={`relative transition-all sm:duration-300  ${
+        isOpen ? "ml-64" : "ml-0"
+      }`}
+    >
+      <Header />
+      <Sidebar />
+      <Outlet />
+    </main>
   );
 };
 

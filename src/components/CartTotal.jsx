@@ -1,7 +1,11 @@
 import { useStore } from "../store/store";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CartTotal = () => {
   const cart = useStore((state) => state.cart);
+  const [status, setStatus] = useState("idle");
+  const navigate = useNavigate();
   const totalItems = cart.reduce(
     (total, item) => (item.isChecked ? total + item.quantity : total),
     0,
@@ -15,6 +19,18 @@ const CartTotal = () => {
       )
       .toFixed(2),
   );
+
+  const showStatus = async () => {
+    setStatus("processing");
+
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    setStatus("success");
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    navigate("success");
+  };
 
   return (
     <div className="p-3">
@@ -37,8 +53,15 @@ const CartTotal = () => {
           <p className="text-gray-500 font-bold text-lg">${totalCost}</p>
         </div>
       </div>
-      <button className="w-full bg-gray-800 text-white text-xl py-2 mt-5">
-        CONFIRM AND PAY
+      <button
+        className="w-full bg-gray-600 hover:bg-gray-700 active:bg-gray-800 text-white text-xl py-2 mt-5"
+        onClick={showStatus}
+      >
+        {status === "processing"
+          ? "PROCESSING..."
+          : status === "success"
+            ? "SUCCESS"
+            : "CONFIRM AND PAY"}
       </button>
     </div>
   );

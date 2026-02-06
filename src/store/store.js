@@ -36,7 +36,13 @@ const createCartSlice = (set, get) => ({
         set((state) => ({
           cart: state.cart.map((item) =>
             item.id === productId
-              ? { ...item, quantity: item.quantity + selectedQty }
+              ? {
+                  ...item,
+                  quantity:
+                    item.quantity + selectedQty > 50
+                      ? item.quantity
+                      : item.quantity + selectedQty,
+                }
               : item,
           ),
         }));
