@@ -43,7 +43,7 @@ const Cart = () => {
     <div className="">
       {showConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="w-full max-w-[280px] md:max-w-[320px] rounded-lg bg-white p-6 shadow-lg">
+          <div className="w-full max-w-[280px] md:max-w-[350px] rounded-lg bg-white p-6 shadow-lg">
             <p className="mb-4 text-center text-lg font-medium">
               Do you want to delete this product?
             </p>
@@ -58,7 +58,7 @@ const Cart = () => {
 
               <button
                 onClick={handleConfirm}
-                className="rounded-md bg-red-500 px-4 py-2 text-sm text-white hover:bg-red-600"
+                className="rounded-md bg-gray-500 px-4 py-2 text-sm text-white hover:bg-gray-600"
               >
                 Delete
               </button>
