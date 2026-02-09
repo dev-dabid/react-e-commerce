@@ -5,7 +5,7 @@ const Counter = ({ id, count, setCount, updateQuantity }) => {
   return (
     <div className="flex items-center max-w-[120px]">
       <button
-        className="bg-gray-400 py-1 px-2 rounded-lg"
+        className="bg-gray-500 py-1 px-2 rounded-lg hover:bg-gray-400 active:bg-gray-600"
         onClick={() =>
           setCount((prev) => {
             if (prev >= 50) return prev;
@@ -38,7 +38,7 @@ const Counter = ({ id, count, setCount, updateQuantity }) => {
       </div>
 
       <button
-        className="bg-gray-400 py-1 px-2 rounded-lg"
+        className="bg-gray-500 py-1 px-2 rounded-lg hover:bg-gray-400 active:bg-gray-600"
         onClick={() =>
           setCount((prev) => {
             console.log(prev);
