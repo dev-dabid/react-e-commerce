@@ -6,6 +6,7 @@ import { HiOutlineTrash } from "react-icons/hi";
 
 const Cart = () => {
   const cart = useStore((state) => state.cart);
+  const searchQuery = useStore((state) => state.searchQuery);
   const [allChecked, setAllChecked] = useState(false);
   const checkAllCartItem = useStore(
     (state) => state.cartActions.checkAllCartItem,
@@ -38,6 +39,10 @@ const Cart = () => {
 
     handleCancel();
   };
+
+  const filteredProducts = cart.filter((item) =>
+    item.title.toLowerCase().includes(searchQuery),
+  );
 
   return (
     <div className="">
@@ -99,7 +104,7 @@ const Cart = () => {
               </div>
 
               <div className="grid gap-5">
-                {cart.map((cartItem, index) => {
+                {filteredProducts.map((cartItem, index) => {
                   return (
                     <CartItemCard
                       key={index}
