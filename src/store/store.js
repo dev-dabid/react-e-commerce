@@ -77,7 +77,7 @@ const createCartSlice = (set, get) => ({
 
     removeCartItem: (id) =>
       set((state) => ({
-        cart: state.cart.filter((item) => item.id === id),
+        cart: state.cart.filter((item) => item.id !== id),
       })),
 
     updateQuantity: (id, newQty) => {
