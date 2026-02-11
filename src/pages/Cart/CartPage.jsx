@@ -38,6 +38,7 @@ const Cart = () => {
         <DeleteModal
           cancelDelete={cancelDelete}
           handleConfirm={handleConfirm}
+          message={"Do you want to delete this product?"}
         />
       )}
       {cart.length === 0 ? (
