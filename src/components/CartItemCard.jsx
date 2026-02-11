@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Counter from "./Counter";
 import { HiOutlineTrash } from "react-icons/hi";
 
-const CartItemCard = ({ index, item, handleAskDelete }) => {
+const CartItemCard = ({ index, item, askDelete }) => {
   const { id, image, title, price, quantity, isChecked } = item;
   const updateQuantity = useStore((state) => state.cartActions.updateQuantity);
   const checkCartItem = useStore((state) => state.cartActions.checkCartItem);
@@ -54,7 +54,7 @@ const CartItemCard = ({ index, item, handleAskDelete }) => {
               <div className="justify-end flex">
                 <button
                   className="bg-gray-400 rounded   p-1 text-white text-2xl"
-                  onClick={() => handleAskDelete(id)}
+                  onClick={() => askDelete(id)}
                 >
                   <HiOutlineTrash />
                 </button>

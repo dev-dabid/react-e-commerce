@@ -4,10 +4,14 @@ const useDeleteConfirm = () => {
   const [showConfirm, setShowConfirm] = useState(false);
   const [targetId, setTargetId] = useState(null);
 
-  const confirmDelete = (bool) => setShowConfirm(bool);
-  const setIdToDelete = (id) => setTargetId(id);
+  const askDelete = (id) => {
+    setTargetId(id);
+    setShowConfirm(true);
+  };
 
-  return { targetId, showConfirm, confirmDelete, setIdToDelete };
+  const cancelDelete = () => setShowConfirm(false);
+
+  return { targetId, showConfirm, askDelete, cancelDelete };
 };
 
 export default useDeleteConfirm;

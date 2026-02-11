@@ -18,18 +18,7 @@ const Cart = () => {
   );
   const removeCartItem = useStore((state) => state.cartActions.removeCartItem);
 
-  const { targetId, showConfirm, confirmDelete, setIdToDelete } =
-    useDeleteConfirm();
-
-  const handleAskDelete = (id) => {
-    setIdToDelete(id);
-    confirmDelete(true);
-  };
-
-  const handleCancel = () => {
-    setIdToDelete(null);
-    confirmDelete(false);
-  };
+  const { targetId, showConfirm, askDelete, cancelDelete } = useDeleteConfirm();
 
   const handleConfirm = () => {
     if (targetId) {
@@ -38,7 +27,7 @@ const Cart = () => {
 
     console.log(`product: ${targetId} successfully deleted`);
 
-    handleCancel();
+    cancelDelete();
   };
 
   const filteredProducts = cart.filter((item) =>
@@ -56,7 +45,7 @@ const Cart = () => {
 
             <div className="flex justify-end gap-3">
               <button
-                onClick={handleCancel}
+                onClick={cancelDelete}
                 className="rounded-md border px-4 py-2 text-sm hover:bg-gray-100"
               >
                 Cancel
@@ -111,7 +100,7 @@ const Cart = () => {
                       key={index}
                       index={index + 1}
                       item={cartItem}
-                      handleAskDelete={handleAskDelete}
+                      askDelete={askDelete}
                     />
                   );
                 })}
