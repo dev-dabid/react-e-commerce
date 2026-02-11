@@ -1,5 +1,6 @@
 import { useStore } from "../../store/store";
 import { useState } from "react";
+import useToggle from "../../hooks/useToggle";
 import useDeleteConfirm from "../../hooks/useDeleteConfirm";
 import CartItemCard from "../../components/CartItemCard";
 import CartTotal from "../../components/CartTotal";
@@ -20,12 +21,22 @@ const Cart = () => {
   const removeCartItem = useStore((state) => state.cartActions.removeCartItem);
 
   const { targetId, showConfirm, askDelete, cancelDelete } = useDeleteConfirm();
+  const { isOpen, toggleOn, toggleOff } = useToggle();
 
   const handleConfirm = () => {
     if (targetId) {
       removeCartItem(targetId);
     }
     cancelDelete();
+  };
+
+  const handleDeleteAll = () => {
+    removeAllCartItem();
+    toggleOff();
+  };
+
+  const cancelDeleteAll = () => {
+    toggleOff();
   };
 
   const filteredProducts = cart.filter((item) =>
@@ -41,6 +52,15 @@ const Cart = () => {
           message={"Do you want to delete this product?"}
         />
       )}
+
+      {isOpen === true && (
+        <DeleteModal
+          cancelDelete={cancelDeleteAll}
+          handleConfirm={handleDeleteAll}
+          message={"Do you want to delete all checked products?"}
+        />
+      )}
+
       {cart.length === 0 ? (
         <div className="flex justify-center items-center absolute w-full h-full">
           <p className="text-2xl text-gray-400">Your cart is empty</p>
@@ -66,7 +86,7 @@ const Cart = () => {
                   <p>DELETE</p>
                   <button
                     className="bg-gray-400 rounded   p-1 text-white text-2xl"
-                    onClick={() => removeAllCartItem()}
+                    onClick={() => toggleOn()}
                   >
                     <HiOutlineTrash />
                   </button>
