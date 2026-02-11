@@ -1,5 +1,6 @@
 import { useStore } from "../../store/store";
 import { useState } from "react";
+import useDeleteConfirm from "../../hooks/useDeleteConfirm";
 import CartItemCard from "../../components/CartItemCard";
 import CartTotal from "../../components/CartTotal";
 import { HiOutlineTrash } from "react-icons/hi";
@@ -17,17 +18,17 @@ const Cart = () => {
   );
   const removeCartItem = useStore((state) => state.cartActions.removeCartItem);
 
-  const [showConfirm, setShowConfirm] = useState(false);
-  const [targetId, setTargetId] = useState(null);
+  const { targetId, showConfirm, confirmDelete, setIdToDelete } =
+    useDeleteConfirm();
 
   const handleAskDelete = (id) => {
-    setTargetId(id);
-    setShowConfirm(true);
+    setIdToDelete(id);
+    confirmDelete(true);
   };
 
   const handleCancel = () => {
-    setTargetId(null);
-    setShowConfirm(false);
+    setIdToDelete(null);
+    confirmDelete(false);
   };
 
   const handleConfirm = () => {
