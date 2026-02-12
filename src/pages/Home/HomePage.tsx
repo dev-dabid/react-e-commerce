@@ -1,12 +1,14 @@
+import React from "react";
 import { useStore } from "../../store/store";
 import ProductCard from "../../components/ProductCard";
+import { Product } from "../../types";
 
-const Home = () => {
+const Home: React.FC = () => {
   const masterProducts = useStore((state) => state.products);
   const hasFetched = useStore((state) => state.hasFetched);
   const searchQuery = useStore((state) => state.searchQuery);
 
-  const products = masterProducts.filter((item) => {
+  const products: Product[] = masterProducts.filter((item) => {
     const cleanQuery = searchQuery.toLowerCase();
     return item.title.toLowerCase().includes(cleanQuery);
   });
