@@ -21,7 +21,7 @@ interface CartSlice {
   cartActions: {
     addToCart: (
       productId: number,
-      product: object,
+      product: Product,
       selectedQty: number,
     ) => void;
     checkAllCartItem: (checkVal: boolean) => void;

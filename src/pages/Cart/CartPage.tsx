@@ -1,3 +1,4 @@
+import React from "react";
 import { useStore } from "../../store/store";
 import { useState } from "react";
 import useToggle from "../../hooks/useToggle";
@@ -7,7 +8,7 @@ import CartTotal from "../../components/CartTotal";
 import DeleteModal from "../../components/DeleteModal";
 import { HiOutlineTrash } from "react-icons/hi";
 
-const Cart = () => {
+const Cart: React.FC = () => {
   const cart = useStore((state) => state.cart);
   const searchQuery = useStore((state) => state.searchQuery);
   const [allChecked, setAllChecked] = useState(false);
