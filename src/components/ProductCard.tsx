@@ -1,10 +1,15 @@
+import React from "react";
 import { useStore } from "../store/store";
 import { useState, useEffect } from "react";
+import { Product } from "../types/index";
 
-const Card = ({ product }) => {
+interface CardProps {
+  product: Product;
+}
+
+const Card: React.FC<CardProps> = ({ product }) => {
   const addToCart = useStore((state) => state.cartActions.addToCart);
-  const cart = useStore((state) => state.cart);
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState<number>(1);
 
   return (
     <div className="flex flex-col p-3">
@@ -12,7 +17,7 @@ const Card = ({ product }) => {
         <img
           className="object-contain h-auto object-center w-full aspect-square"
           src={product.image}
-          alt=""
+          alt={product.title}
         />
       </div>
       <p className="text-lg/normal truncate">{product.title}</p>
@@ -21,7 +26,7 @@ const Card = ({ product }) => {
         <select
           className="text-center"
           onChange={(e) => setQty(Number(e.target.value))}
-          name={product.id}
+          name={product.id.toString()}
         >
           {Array.from({ length: 10 }, (_, i) => {
             return (
