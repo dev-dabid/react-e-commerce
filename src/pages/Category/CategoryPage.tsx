@@ -1,8 +1,9 @@
+import React from "react";
 import { useStore } from "../../store/store";
 import { useState, useEffect } from "react";
 import ProductCart from "../../components/ProductCard";
 
-const Categories = () => {
+const Categories: React.FC = () => {
   const products = useStore((state) => state.products);
   const currentCategory = useStore((state) => state.currentCategory);
   const searchQuery = useStore((state) => state.searchQuery);
@@ -14,13 +15,14 @@ const Categories = () => {
     .filter((product) => {
       return product.category === currentCategory || currentCategory === "all";
     })
+
     .filter((products) => {
       return products.title.toLowerCase().includes(searchQuery);
     });
 
-  const getCategories = () => {
-    const catObjs = {};
-    const catArr = ["All"].sort();
+  const getCategories = (): string[] => {
+    const catObjs: Record<string, boolean> = {};
+    const catArr: string[] = ["all"].sort();
 
     products.forEach((product) => {
       catObjs[product.category] = true;
@@ -40,10 +42,12 @@ const Categories = () => {
 
   const [activeCat, setActiveCat] = useState(currentCategory);
 
-  const changeCategory = (e, category) => {
-    selectCategory(e.target.innerText.toLowerCase());
+  const changeCategory = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    category: string,
+  ) => {
+    selectCategory(category);
     setActiveCat(category);
-    console.log(category);
   };
 
   return (
