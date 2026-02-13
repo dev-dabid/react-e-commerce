@@ -2,15 +2,15 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SidebarProvider } from "./context/SidebarContext.jsx";
 import { useStore } from "./store/store.js";
 import { useState, useEffect } from "react";
-import MainLayout from "./layouts/MainLayout.jsx";
-import CategoryLayout from "./layouts/CategoryLayout.jsx";
-import CartLayout from "./layouts/CategoryLayout.jsx";
-import AccountLayout from "./layouts/AccountLayout.jsx";
-import HomePage from "./pages/Home/HomePage.jsx";
-import CategoryPage from "./pages/Category/CategoryPage.jsx";
-import CartPage from "./pages/Cart/CartPage.jsx";
-import SuccessPage from "./pages/Cart/SuccessPage.jsx";
-import AccountPage from "./pages/Account/AccountPage.jsx";
+import MainLayout from "./layouts/MainLayout.js";
+import CategoryLayout from "./layouts/CategoryLayout.js";
+import CartLayout from "./layouts/CategoryLayout.js";
+import AccountLayout from "./layouts/AccountLayout.js";
+import HomePage from "./pages/Home/HomePage.js";
+import CategoryPage from "./pages/Category/CategoryPage.js";
+import CartPage from "./pages/Cart/CartPage.js";
+import SuccessPage from "./pages/Cart/SuccessPage.js";
+import AccountPage from "./pages/Account/AccountPage.js";
 
 const router = createBrowserRouter([
   {

@@ -1,4 +1,14 @@
-const DeleteModal = ({ cancelDelete, handleConfirm, message }) => {
+interface DeleteModalProps {
+  cancelDelete: () => void;
+  handleConfirm: () => void;
+  message: string;
+}
+
+const DeleteModal = ({
+  cancelDelete,
+  handleConfirm,
+  message,
+}: DeleteModalProps) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
       <div className="w-full max-w-[280px] md:max-w-[350px] rounded-lg bg-white p-6 shadow-lg">
