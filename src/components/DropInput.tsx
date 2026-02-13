@@ -1,7 +1,11 @@
 import Input from "./Input";
 
-const DropInput = ({ isOpen }) => {
-  const toggleSearch = {
+interface DropInputProps {
+  isOpen: boolean;
+}
+
+const DropInput = ({ isOpen }: DropInputProps) => {
+  const toggleSearch: React.CSSProperties = {
     transform: isOpen ? "translateY(50px)" : "translateY(-100%)",
     position: "absolute",
     top: "0",

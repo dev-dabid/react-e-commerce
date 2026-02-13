@@ -5,9 +5,9 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { HiOutlineUser } from "react-icons/hi";
 
 const MobileNav = () => {
-  const links = ["home", "category", "cart", "account"];
+  const links = ["home", "category", "cart", "account"] as const;
 
-  const icons = {
+  const icons: Record<string, React.ReactNode> = {
     home: <HiOutlineHome size={25} />,
     category: <HiOutlineViewGrid size={25} />,
     cart: <HiOutlineShoppingCart size={25} />,

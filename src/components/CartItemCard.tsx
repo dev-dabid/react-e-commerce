@@ -3,7 +3,20 @@ import { useState, useEffect } from "react";
 import Counter from "./Counter";
 import { HiOutlineTrash } from "react-icons/hi";
 
-const CartItemCard = ({ index, item, askDelete }) => {
+interface CardItemProps {
+  index: number;
+  item: {
+    id: number;
+    image: string;
+    title: string;
+    price: number;
+    quantity: number;
+    isChecked: boolean;
+  };
+  askDelete: (id: number) => void;
+}
+
+const CartItemCard = ({ index, item, askDelete }: CardItemProps) => {
   const { id, image, title, price, quantity, isChecked } = item;
   const updateQuantity = useStore((state) => state.cartActions.updateQuantity);
   const checkCartItem = useStore((state) => state.cartActions.checkCartItem);

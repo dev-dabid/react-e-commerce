@@ -1,7 +1,14 @@
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 
-const Counter = ({ id, count, setCount, updateQuantity }) => {
+interface CounterProps {
+  id: number;
+  count: number;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+  updateQuantity: (id: number, newQty: number) => void;
+}
+
+const Counter = ({ id, count, setCount, updateQuantity }: CounterProps) => {
   return (
     <div className="flex items-center max-w-[120px]">
       <button

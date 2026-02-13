@@ -10,7 +10,7 @@ const Sidebar = () => {
   const { isOpen, setIsOpen } = useSidebar();
   const [width, setWidth] = useState(window.innerWidth);
 
-  const sidebarStyle = {
+  const sidebarStyle: object = {
     transform: isOpen ? "translateX(0)" : "translateX(-100%)",
     transition: "transform 0.3s ease",
     height: "100%",
@@ -40,9 +40,9 @@ const Sidebar = () => {
     isBelow();
   }, [width < 1024]);
 
-  const links = ["home", "category", "cart", "account"];
+  const links: string[] = ["home", "category", "cart", "account"];
 
-  const icons = {
+  const icons: Record<string, React.ReactNode> = {
     home: <HiOutlineHome size={25} />,
     category: <HiOutlineViewGrid size={25} />,
     cart: <HiOutlineShoppingCart size={25} />,

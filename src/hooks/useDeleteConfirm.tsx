@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 const useDeleteConfirm = () => {
-  const [showConfirm, setShowConfirm] = useState(false);
-  const [targetId, setTargetId] = useState(null);
+  const [showConfirm, setShowConfirm] = useState<boolean>(false);
+  const [targetId, setTargetId] = useState<number | null>(null);
 
-  const askDelete = (id) => {
+  const askDelete = (id: number) => {
     setTargetId(id);
     setShowConfirm(true);
   };
